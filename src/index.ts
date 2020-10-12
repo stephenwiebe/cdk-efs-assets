@@ -1,7 +1,6 @@
 import * as path from 'path';
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as efs from '@aws-cdk/aws-efs';
-import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as cdk from '@aws-cdk/core';
 import * as cr from '@aws-cdk/custom-resources';
@@ -52,7 +51,7 @@ export class GithubSourceSync extends cdk.Construct {
       //   ...props.efsSecurityGroup,
       // ],
       memorySize: 512,
-      timeout: cdk.Duration.minutes(5),
+      timeout: cdk.Duration.minutes(1),
       environment: {
         REPOSITORY_URI: props.repository,
         MOUNT_TARGET: '/mnt/efsmount',
@@ -65,18 +64,8 @@ export class GithubSourceSync extends cdk.Construct {
     const myProvider = new cr.Provider(this, 'MyProvider', {
       onEventHandler: handler,
     });
-    new cdk.CustomResource(this, 'SyncTrigger', { serviceToken: myProvider.serviceToken });
-
-    // grant the lambda iam role to mount the efs mount access point
-    handler.addToRolePolicy(new iam.PolicyStatement({
-      actions: ['elasticfilesystem:ClientMount'],
-      resources: ['*'],
-      conditions: {
-        StringEquals: {
-          'elasticfilesystem:AccessPointArn': props.efsAccessPoint.accessPointArn,
-        },
-      },
-    }));
+    const triggerResource = new cdk.CustomResource(this, 'SyncTrigger', { serviceToken: myProvider.serviceToken });
+    triggerResource.node.addDependency(props.efsAccessPoint);
 
   }
 }

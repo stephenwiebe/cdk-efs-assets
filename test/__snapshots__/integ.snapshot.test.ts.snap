@@ -240,7 +240,7 @@ Object {
           ],
         },
         "Runtime": "python3.8",
-        "Timeout": 300,
+        "Timeout": 60,
         "VpcConfig": Object {
           "SecurityGroupIds": Array [
             Object {
@@ -512,6 +512,9 @@ Object {
     },
     "GithubSourceFeederSyncTrigger68FCB082": Object {
       "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "FilesystemEfsAccessPointE102BC46",
+      ],
       "Properties": Object {
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
