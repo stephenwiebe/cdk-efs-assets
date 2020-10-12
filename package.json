@@ -73,7 +73,10 @@
   },
   "bundledDependencies": [],
   "keywords": [
-    "cdk"
+    "aws",
+    "cdk",
+    "efs",
+    "github"
   ],
   "engines": {
     "node": ">= 10.17.0"
@@ -162,10 +165,19 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "python": {
+        "distName": "cdk-efs-assets",
+        "module": "cdk_efs_assets"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
     }
+  },
+  "awscdkio": {
+    "twitter": "pahudnet",
+    "announce": false
   }
 }

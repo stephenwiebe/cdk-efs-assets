@@ -18,6 +18,23 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-secretsmanager',
     '@aws-cdk/custom-resources',
   ],
+
+  keywords: [
+    'aws',
+    'cdk',
+    'efs',
+    'github',
+  ],
+
+  catalog: {
+    twitter: 'pahudnet',
+    announce: false,
+  },
+
+  python: {
+    distName: 'cdk-efs-assets',
+    module: 'cdk_efs_assets'
+  }
 });
 
 
