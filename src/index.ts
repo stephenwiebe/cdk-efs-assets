@@ -65,7 +65,7 @@ export class GithubSourceSync extends cdk.Construct {
       onEventHandler: handler,
     });
     const triggerResource = new cdk.CustomResource(this, 'SyncTrigger', { serviceToken: myProvider.serviceToken });
-    triggerResource.node.addDependency(props.efsAccessPoint);
+    // triggerResource.node.addDependency(props.efsAccessPoint);
 
   }
 }
