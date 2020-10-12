@@ -2,9 +2,12 @@
 
 CDK construct library to populate Amazon EFS assets from Github or S3.
 
-# Sample
+# `GithubSourceSync`
 
-The sample below creates the sync from github repository to Amazon EFS filesystem.
+The `GithubSourceSync` deploys your Amazon EFS assets from specified Github repository. 
+
+
+## Sample
 
 ```ts
 import { GithubSourceSync } from 'cdk-efs-assets';
@@ -47,6 +50,11 @@ new GithubSourceSync(stack, 'GithubSourceSync', {
 })
 
 ```
+
+
+# `S3SourceSync`
+
+TBD
 
 
 
