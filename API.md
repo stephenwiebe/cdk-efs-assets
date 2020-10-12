@@ -35,10 +35,9 @@ new GithubSourceSync(scope: Construct, id: string, props: GithubSourceFeederProp
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[GithubSourceFeederProps](#cdk-efs-assets-githubsourcefeederprops)</code>)  *No description*
   * **efsAccessPoint** (<code>[AccessPoint](#aws-cdk-aws-efs-accesspoint)</code>)  The target Amazon EFS filesystem to clone the github repository to. 
-  * **efsSecurityGroup** (<code>Array<[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)></code>)  The security group of the Amaozn EFS. 
   * **repository** (<code>string</code>)  The github repository HTTP URI. 
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  The VPC of the Amazon EFS Filesystem. 
-  * **secretToken** (<code>[SecretValue](#aws-cdk-core-secretvalue)</code>)  The github personal access token(PAT) value from secrets manager. __*Optional*__
+  * **runsAfter** (<code>Array<[IDependable](#aws-cdk-core-idependable)></code>)  The dependent resources before triggering the sync. __*Optional*__
 
 
 
@@ -53,10 +52,9 @@ new GithubSourceSync(scope: Construct, id: string, props: GithubSourceFeederProp
 Name | Type | Description 
 -----|------|-------------
 **efsAccessPoint** | <code>[AccessPoint](#aws-cdk-aws-efs-accesspoint)</code> | The target Amazon EFS filesystem to clone the github repository to.
-**efsSecurityGroup** | <code>Array<[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)></code> | The security group of the Amaozn EFS.
 **repository** | <code>string</code> | The github repository HTTP URI.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC of the Amazon EFS Filesystem.
-**secretToken**? | <code>[SecretValue](#aws-cdk-core-secretvalue)</code> | The github personal access token(PAT) value from secrets manager.<br/>__*Optional*__
+**runsAfter**? | <code>Array<[IDependable](#aws-cdk-core-idependable)></code> | The dependent resources before triggering the sync.<br/>__*Optional*__
 
 
 

@@ -15,17 +15,13 @@ export interface GithubSourceFeederProps {
    */
   readonly vpc: ec2.IVpc;
   /**
-   * The security group of the Amaozn EFS
-   */
-  readonly efsSecurityGroup: ec2.ISecurityGroup[];
-  /**
    * The github repository HTTP URI.
    */
   readonly repository: string;
   /**
-   * The github personal access token(PAT) value from secrets manager.
+   * The dependent resources before triggering the sync.
    */
-  readonly secretToken?: cdk.SecretValue;
+  readonly runsAfter?: cdk.IDependable[];
 }
 
 export class GithubSourceSync extends cdk.Construct {
@@ -47,9 +43,6 @@ export class GithubSourceSync extends cdk.Construct {
         subnetType: ec2.SubnetType.PRIVATE,
       },
       vpc: props.vpc,
-      // securityGroups: [
-      //   ...props.efsSecurityGroup,
-      // ],
       memorySize: 512,
       timeout: cdk.Duration.minutes(1),
       environment: {
@@ -58,14 +51,18 @@ export class GithubSourceSync extends cdk.Construct {
       },
     });
 
-    props.efsSecurityGroup[0].connections.allowFrom(handler, ec2.Port.allTraffic());
-
     // create a custom resource to trigger the sync
     const myProvider = new cr.Provider(this, 'MyProvider', {
       onEventHandler: handler,
     });
-    const triggerResource = new cdk.CustomResource(this, 'SyncTrigger', { serviceToken: myProvider.serviceToken });
-    triggerResource.node.addDependency(props.efsAccessPoint);
 
+    new cdk.CustomResource(this, 'SyncTrigger', { serviceToken: myProvider.serviceToken });
+
+    // ensure the dependency
+    if (props.runsAfter) {
+      handler.node.addDependency(...props.runsAfter);
+    };
+
+    handler.node.addDependency(props.efsAccessPoint);
   }
 }

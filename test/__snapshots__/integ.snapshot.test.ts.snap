@@ -137,27 +137,9 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroupIngress",
     },
-    "FilesystemEfsSecurityGroupfromtestingstackGithubSourceSyncHandlerSecurityGroup97922785ALLTRAFFICA1F3BF67": Object {
-      "Properties": Object {
-        "Description": "from testingstackGithubSourceSyncHandlerSecurityGroup97922785:ALL TRAFFIC",
-        "GroupId": Object {
-          "Fn::GetAtt": Array [
-            "FilesystemEfsSecurityGroup6D2E3511",
-            "GroupId",
-          ],
-        },
-        "IpProtocol": "-1",
-        "SourceSecurityGroupId": Object {
-          "Fn::GetAtt": Array [
-            "GithubSourceSyncHandlerSecurityGroupB42B4DDA",
-            "GroupId",
-          ],
-        },
-      },
-      "Type": "AWS::EC2::SecurityGroupIngress",
-    },
     "GithubSourceSyncHandlerAB01987F": Object {
       "DependsOn": Array [
+        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
         "GithubSourceSyncHandlerServiceRoleDefaultPolicy11CD9571",
@@ -260,6 +242,7 @@ Object {
     },
     "GithubSourceSyncHandlerSecurityGroupB42B4DDA": Object {
       "DependsOn": Array [
+        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
       ],
@@ -278,6 +261,7 @@ Object {
     },
     "GithubSourceSyncHandlerServiceRole5A96037E": Object {
       "DependsOn": Array [
+        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
       ],
@@ -325,6 +309,7 @@ Object {
     },
     "GithubSourceSyncHandlerServiceRoleDefaultPolicy11CD9571": Object {
       "DependsOn": Array [
+        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
       ],
@@ -512,9 +497,6 @@ Object {
     },
     "GithubSourceSyncSyncTrigger013FD605": Object {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "FilesystemEfsAccessPointE102BC46",
-      ],
       "Properties": Object {
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
