@@ -40,7 +40,7 @@ export class IntegTesting {
 
     // create the one-time sync from Github repository to Amaozn EFS
     new GithubSourceSync(stack, 'GithubSourceFeeder', {
-      repository: 'https://github.com/pahud/cdk-spot-one.git',
+      repository: 'https://github.com/pahud/cdk-efs-assets.git',
       efsAccessPoint,
       efsSecurityGroup: fs.connections.securityGroups,
       vpc,
