@@ -140,7 +140,11 @@
       "category": 2
     }
   },
+<<<<<<< HEAD
   "version": "0.1.0",
+=======
+  "version": "0.0.2",
+>>>>>>> 003baf04382a0781acef4fc599dbb33872f592e2
   "types": "lib/index.d.ts",
   "jest": {
     "clearMocks": true,
