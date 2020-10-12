@@ -39,7 +39,7 @@ const efsAccessPoint = fs.addAccessPoint('EfsAccessPoint', {
 });
 
 // create the one-time sync from Github repository to Amaozn EFS
-new GithubSourceSync(stack, 'GithubSourceFeeder', {
+new GithubSourceSync(stack, 'GithubSourceSync', {
   repository: 'https://github.com/pahud/cdk-efs-assets.git',
   efsAccessPoint,
   efsSecurityGroup: fs.connections.securityGroups,

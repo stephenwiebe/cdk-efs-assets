@@ -7,7 +7,7 @@ const project = new AwsCdkConstructLibrary({
   authorName: "Pahud Hsieh",
   cdkVersion: "1.67.0",
   name: "cdk-efs-assets",
-  repository: "https://github.com/pahudnet/cdk-efs-assets.git",
+  repository: "https://github.com/pahud/cdk-efs-assets.git",
   description: 'Amazon EFS assets from Github repositories or S3 buckets',
   cdkDependencies: [
     '@aws-cdk/core',
