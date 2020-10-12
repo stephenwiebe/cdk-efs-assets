@@ -4,7 +4,7 @@
   "description": "Amazon EFS assets from Github repositories or S3 buckets",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pahudnet/cdk-efs-assets.git"
+    "url": "https://github.com/pahud/cdk-efs-assets.git"
   },
   "bin": {},
   "scripts": {
@@ -140,7 +140,7 @@
       "category": 2
     }
   },
-  "version": "0.1.4",
+  "version": "0.1.5",
   "types": "lib/index.d.ts",
   "jest": {
     "clearMocks": true,
