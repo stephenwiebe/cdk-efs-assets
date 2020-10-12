@@ -13,6 +13,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/core',
     '@aws-cdk/aws-ec2',
     '@aws-cdk/aws-efs',
+    '@aws-cdk/aws-iam',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-secretsmanager',
     '@aws-cdk/custom-resources',

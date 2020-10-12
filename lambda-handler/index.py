@@ -26,7 +26,9 @@ def on_create(event):
 
   sync(repo, mount_target)
 
-  return { 'Data': json.dumps({'status': 'ok'}) }
+  ok_result = {'status': 'ok'}
+
+  return { 'Data': ok_result }
 
   # return { 'PhysicalResourceId': physical_id }
 

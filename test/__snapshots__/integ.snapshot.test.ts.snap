@@ -1,0 +1,528 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integ snapshot validation 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78ArtifactHashB795D93E": Object {
+      "Description": "Artifact hash for asset \\"54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78\\"",
+      "Type": "String",
+    },
+    "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3BucketC98BB2F5": Object {
+      "Description": "S3 bucket for asset \\"54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78\\"",
+      "Type": "String",
+    },
+    "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3VersionKey7E56FA6A": Object {
+      "Description": "S3 key for asset version \\"54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
+      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
+      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
+      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "Filesystem653F8FD3": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "FileSystemTags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "testing-stack/Filesystem",
+          },
+        ],
+      },
+      "Type": "AWS::EFS::FileSystem",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "FilesystemEfsAccessPointE102BC46": Object {
+      "Properties": Object {
+        "FileSystemId": Object {
+          "Ref": "Filesystem653F8FD3",
+        },
+        "PosixUser": Object {
+          "Gid": "1001",
+          "Uid": "1001",
+        },
+        "RootDirectory": Object {
+          "CreationInfo": Object {
+            "OwnerGid": "1001",
+            "OwnerUid": "1001",
+            "Permissions": "0755",
+          },
+          "Path": "/demo",
+        },
+      },
+      "Type": "AWS::EFS::AccessPoint",
+    },
+    "FilesystemEfsMountTarget1FA5225C0": Object {
+      "Properties": Object {
+        "FileSystemId": Object {
+          "Ref": "Filesystem653F8FD3",
+        },
+        "SecurityGroups": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "FilesystemEfsSecurityGroup6D2E3511",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": "p-12345",
+      },
+      "Type": "AWS::EFS::MountTarget",
+    },
+    "FilesystemEfsMountTarget29F807637": Object {
+      "Properties": Object {
+        "FileSystemId": Object {
+          "Ref": "Filesystem653F8FD3",
+        },
+        "SecurityGroups": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "FilesystemEfsSecurityGroup6D2E3511",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": "p-67890",
+      },
+      "Type": "AWS::EFS::MountTarget",
+    },
+    "FilesystemEfsSecurityGroup6D2E3511": Object {
+      "Properties": Object {
+        "GroupDescription": "testing-stack/Filesystem/EfsSecurityGroup",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "testing-stack/Filesystem",
+          },
+        ],
+        "VpcId": "vpc-12345",
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "FilesystemEfsSecurityGroupfromtestingstackGithubSourceFeederHandlerSecurityGroup0E70A85E2049249B9EA9": Object {
+      "Properties": Object {
+        "Description": "from testingstackGithubSourceFeederHandlerSecurityGroup0E70A85E:2049",
+        "FromPort": 2049,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "FilesystemEfsSecurityGroup6D2E3511",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "GithubSourceFeederHandlerSecurityGroup6E7F9E92",
+            "GroupId",
+          ],
+        },
+        "ToPort": 2049,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "FilesystemEfsSecurityGroupfromtestingstackGithubSourceFeederHandlerSecurityGroup0E70A85EALLTRAFFIC3F25714B": Object {
+      "Properties": Object {
+        "Description": "from testingstackGithubSourceFeederHandlerSecurityGroup0E70A85E:ALL TRAFFIC",
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "FilesystemEfsSecurityGroup6D2E3511",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "-1",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "GithubSourceFeederHandlerSecurityGroup6E7F9E92",
+            "GroupId",
+          ],
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "GithubSourceFeederHandler052FB6F9": Object {
+      "DependsOn": Array [
+        "FilesystemEfsMountTarget1FA5225C0",
+        "FilesystemEfsMountTarget29F807637",
+        "GithubSourceFeederHandlerServiceRoleDefaultPolicy076A5243",
+        "GithubSourceFeederHandlerServiceRole40E04825",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3BucketC98BB2F5",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3VersionKey7E56FA6A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3VersionKey7E56FA6A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "MOUNT_TARGET": "/mnt/efsmount",
+            "REPOSITORY_URI": "https://github.com/pahud/cdk-efs-assets.git",
+          },
+        },
+        "FileSystemConfigs": Array [
+          Object {
+            "Arn": Object {
+              "Fn::Join": Array [
+                "",
+                Array [
+                  "arn:",
+                  Object {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":elasticfilesystem:ap-northeast-1:11111111111:access-point/",
+                  Object {
+                    "Ref": "FilesystemEfsAccessPointE102BC46",
+                  },
+                ],
+              ],
+            },
+            "LocalMountPath": "/mnt/efsmount",
+          },
+        ],
+        "Handler": "index.on_event",
+        "Layers": Array [
+          "arn:aws:lambda:ap-northeast-1:553035198032:layer:git-lambda2:7",
+        ],
+        "MemorySize": 512,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "GithubSourceFeederHandlerServiceRole40E04825",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.8",
+        "Timeout": 300,
+        "VpcConfig": Object {
+          "SecurityGroupIds": Array [
+            Object {
+              "Fn::GetAtt": Array [
+                "GithubSourceFeederHandlerSecurityGroup6E7F9E92",
+                "GroupId",
+              ],
+            },
+          ],
+          "SubnetIds": Array [
+            "p-12345",
+            "p-67890",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "GithubSourceFeederHandlerSecurityGroup6E7F9E92": Object {
+      "DependsOn": Array [
+        "FilesystemEfsMountTarget1FA5225C0",
+        "FilesystemEfsMountTarget29F807637",
+      ],
+      "Properties": Object {
+        "GroupDescription": "Automatic security group for Lambda Function testingstackGithubSourceFeederHandler9C5EC588",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": "vpc-12345",
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "GithubSourceFeederHandlerServiceRole40E04825": Object {
+      "DependsOn": Array [
+        "FilesystemEfsMountTarget1FA5225C0",
+        "FilesystemEfsMountTarget29F807637",
+      ],
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "GithubSourceFeederHandlerServiceRoleDefaultPolicy076A5243": Object {
+      "DependsOn": Array [
+        "FilesystemEfsMountTarget1FA5225C0",
+        "FilesystemEfsMountTarget29F807637",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "elasticfilesystem:ClientMount",
+              "Condition": Object {
+                "StringEquals": Object {
+                  "elasticfilesystem:AccessPointArn": Object {
+                    "Fn::Join": Array [
+                      "",
+                      Array [
+                        "arn:",
+                        Object {
+                          "Ref": "AWS::Partition",
+                        },
+                        ":elasticfilesystem:ap-northeast-1:11111111111:access-point/",
+                        Object {
+                          "Ref": "FilesystemEfsAccessPointE102BC46",
+                        },
+                      ],
+                    ],
+                  },
+                },
+              },
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "elasticfilesystem:ClientWrite",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":elasticfilesystem:ap-northeast-1:11111111111:file-system/",
+                    Object {
+                      "Ref": "Filesystem653F8FD3",
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GithubSourceFeederHandlerServiceRoleDefaultPolicy076A5243",
+        "Roles": Array [
+          Object {
+            "Ref": "GithubSourceFeederHandlerServiceRole40E04825",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "GithubSourceFeederMyProviderframeworkonEvent1791BD95": Object {
+      "DependsOn": Array [
+        "GithubSourceFeederMyProviderframeworkonEventServiceRoleDefaultPolicy13D3827E",
+        "GithubSourceFeederMyProviderframeworkonEventServiceRoleF3089C9E",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (testing-stack/GithubSourceFeeder/MyProvider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "GithubSourceFeederHandler052FB6F9",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "GithubSourceFeederMyProviderframeworkonEventServiceRoleF3089C9E",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs10.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "GithubSourceFeederMyProviderframeworkonEventServiceRoleDefaultPolicy13D3827E": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "GithubSourceFeederHandler052FB6F9",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "GithubSourceFeederMyProviderframeworkonEventServiceRoleDefaultPolicy13D3827E",
+        "Roles": Array [
+          Object {
+            "Ref": "GithubSourceFeederMyProviderframeworkonEventServiceRoleF3089C9E",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "GithubSourceFeederMyProviderframeworkonEventServiceRoleF3089C9E": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "GithubSourceFeederSyncTrigger68FCB082": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "GithubSourceFeederMyProviderframeworkonEvent1791BD95",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+}
+`;
