@@ -21,6 +21,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-secretsmanager',
     '@aws-cdk/custom-resources',
   ],
+  dependabot: false,
 
   keywords: [
     'aws',
