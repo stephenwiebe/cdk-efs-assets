@@ -51,7 +51,7 @@ export class GithubSourceSync extends cdk.Construct {
       },
       currentVersionOptions: {
         provisionedConcurrentExecutions: 1,
-      }
+      },
     });
 
     // create a custom resource to trigger the sync
