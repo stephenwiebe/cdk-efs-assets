@@ -3,7 +3,7 @@ import * as efs from '@aws-cdk/aws-efs';
 import { App, Stack, RemovalPolicy } from '@aws-cdk/core';
 import { GithubSourceSync } from './';
 
-const AWS_DEFAULT_REGION = 'ap-northeast-1';
+const AWS_DEFAULT_REGION = 'us-east-1';
 
 export class IntegTesting {
   readonly stack: Stack[];
@@ -16,7 +16,7 @@ export class IntegTesting {
       account: process.env.CDK_DEFAULT_ACCOUNT ?? '11111111111',
     };
 
-    const stack = new Stack(app, 'testing-stack', { env });
+    const stack = new Stack(app, 'testing-stack9', { env });
 
     const vpc = ec2.Vpc.fromLookup(stack, 'Vpc', { isDefault: true });
 

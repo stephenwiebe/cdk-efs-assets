@@ -45,9 +45,9 @@ const efsAccessPoint = fs.addAccessPoint('EfsAccessPoint', {
 new GithubSourceSync(stack, 'GithubSourceSync', {
   repository: 'https://github.com/pahud/cdk-efs-assets.git',
   efsAccessPoint,
-  efsSecurityGroup: fs.connections.securityGroups,
+  runsAfter: [fs.mountTargetsAvailable],
   vpc,
-})
+});
 
 ```
 

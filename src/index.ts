@@ -49,6 +49,9 @@ export class GithubSourceSync extends cdk.Construct {
         REPOSITORY_URI: props.repository,
         MOUNT_TARGET: '/mnt/efsmount',
       },
+      currentVersionOptions: {
+        provisionedConcurrentExecutions: 1,
+      }
     });
 
     // create a custom resource to trigger the sync
@@ -61,8 +64,10 @@ export class GithubSourceSync extends cdk.Construct {
     // ensure the dependency
     if (props.runsAfter) {
       handler.node.addDependency(...props.runsAfter);
+      // triggerResource.node.addDependency(...props.runsAfter);
     };
 
-    handler.node.addDependency(props.efsAccessPoint);
+    // handler.node.addDependency(props.efsAccessPoint);
+    // triggerResource.node.addDependency(props.efsAccessPoint);
   }
 }

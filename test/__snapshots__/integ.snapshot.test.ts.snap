@@ -3,16 +3,16 @@
 exports[`integ snapshot validation 1`] = `
 Object {
   "Parameters": Object {
-    "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78ArtifactHashB795D93E": Object {
-      "Description": "Artifact hash for asset \\"54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78\\"",
+    "AssetParameters2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00bArtifactHash6199E2E2": Object {
+      "Description": "Artifact hash for asset \\"2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00b\\"",
       "Type": "String",
     },
-    "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3BucketC98BB2F5": Object {
-      "Description": "S3 bucket for asset \\"54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78\\"",
+    "AssetParameters2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00bS3Bucket6ECA475E": Object {
+      "Description": "S3 bucket for asset \\"2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00b\\"",
       "Type": "String",
     },
-    "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3VersionKey7E56FA6A": Object {
-      "Description": "S3 key for asset version \\"54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78\\"",
+    "AssetParameters2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00bS3VersionKeyE9341449": Object {
+      "Description": "S3 key for asset version \\"2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00b\\"",
       "Type": "String",
     },
     "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
@@ -35,7 +35,7 @@ Object {
         "FileSystemTags": Array [
           Object {
             "Key": "Name",
-            "Value": "testing-stack/Filesystem",
+            "Value": "testing-stack9/Filesystem",
           },
         ],
       },
@@ -98,7 +98,7 @@ Object {
     },
     "FilesystemEfsSecurityGroup6D2E3511": Object {
       "Properties": Object {
-        "GroupDescription": "testing-stack/Filesystem/EfsSecurityGroup",
+        "GroupDescription": "testing-stack9/Filesystem/EfsSecurityGroup",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -109,16 +109,16 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "testing-stack/Filesystem",
+            "Value": "testing-stack9/Filesystem",
           },
         ],
         "VpcId": "vpc-12345",
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
-    "FilesystemEfsSecurityGroupfromtestingstackGithubSourceSyncHandlerSecurityGroup9792278520497260504F": Object {
+    "FilesystemEfsSecurityGroupfromtestingstack9GithubSourceSyncHandlerSecurityGroup336037832049ACBEAC80": Object {
       "Properties": Object {
-        "Description": "from testingstackGithubSourceSyncHandlerSecurityGroup97922785:2049",
+        "Description": "from testingstack9GithubSourceSyncHandlerSecurityGroup33603783:2049",
         "FromPort": 2049,
         "GroupId": Object {
           "Fn::GetAtt": Array [
@@ -139,7 +139,6 @@ Object {
     },
     "GithubSourceSyncHandlerAB01987F": Object {
       "DependsOn": Array [
-        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
         "GithubSourceSyncHandlerServiceRoleDefaultPolicy11CD9571",
@@ -148,7 +147,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3BucketC98BB2F5",
+            "Ref": "AssetParameters2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00bS3Bucket6ECA475E",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -161,7 +160,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3VersionKey7E56FA6A",
+                          "Ref": "AssetParameters2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00bS3VersionKeyE9341449",
                         },
                       ],
                     },
@@ -174,7 +173,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters54d2cfd937a4fd69cc257b5575f063ed50445defb410d4c5d866d3d85058db78S3VersionKey7E56FA6A",
+                          "Ref": "AssetParameters2657f0b13846999aa09b4b32a97551d227bbddbb93f6bc1d714d6558ef64e00bS3VersionKeyE9341449",
                         },
                       ],
                     },
@@ -200,7 +199,7 @@ Object {
                   Object {
                     "Ref": "AWS::Partition",
                   },
-                  ":elasticfilesystem:ap-northeast-1:11111111111:access-point/",
+                  ":elasticfilesystem:us-east-1:11111111111:access-point/",
                   Object {
                     "Ref": "FilesystemEfsAccessPointE102BC46",
                   },
@@ -212,7 +211,7 @@ Object {
         ],
         "Handler": "index.on_event",
         "Layers": Array [
-          "arn:aws:lambda:ap-northeast-1:553035198032:layer:git-lambda2:7",
+          "arn:aws:lambda:us-east-1:553035198032:layer:git-lambda2:7",
         ],
         "MemorySize": 512,
         "Role": Object {
@@ -242,12 +241,11 @@ Object {
     },
     "GithubSourceSyncHandlerSecurityGroupB42B4DDA": Object {
       "DependsOn": Array [
-        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
       ],
       "Properties": Object {
-        "GroupDescription": "Automatic security group for Lambda Function testingstackGithubSourceSyncHandlerF1B369F3",
+        "GroupDescription": "Automatic security group for Lambda Function testingstack9GithubSourceSyncHandler6DC6C596",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -261,7 +259,6 @@ Object {
     },
     "GithubSourceSyncHandlerServiceRole5A96037E": Object {
       "DependsOn": Array [
-        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
       ],
@@ -309,7 +306,6 @@ Object {
     },
     "GithubSourceSyncHandlerServiceRoleDefaultPolicy11CD9571": Object {
       "DependsOn": Array [
-        "FilesystemEfsAccessPointE102BC46",
         "FilesystemEfsMountTarget1FA5225C0",
         "FilesystemEfsMountTarget29F807637",
       ],
@@ -328,7 +324,7 @@ Object {
                         Object {
                           "Ref": "AWS::Partition",
                         },
-                        ":elasticfilesystem:ap-northeast-1:11111111111:access-point/",
+                        ":elasticfilesystem:us-east-1:11111111111:access-point/",
                         Object {
                           "Ref": "FilesystemEfsAccessPointE102BC46",
                         },
@@ -351,7 +347,7 @@ Object {
                     Object {
                       "Ref": "AWS::Partition",
                     },
-                    ":elasticfilesystem:ap-northeast-1:11111111111:file-system/",
+                    ":elasticfilesystem:us-east-1:11111111111:file-system/",
                     Object {
                       "Ref": "Filesystem653F8FD3",
                     },
@@ -415,7 +411,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (testing-stack/GithubSourceSync/MyProvider)",
+        "Description": "AWS CDK resource provider framework - onEvent (testing-stack9/GithubSourceSync/MyProvider)",
         "Environment": Object {
           "Variables": Object {
             "USER_ON_EVENT_FUNCTION_ARN": Object {

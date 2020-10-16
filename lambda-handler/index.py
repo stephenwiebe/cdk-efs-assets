@@ -45,4 +45,6 @@ def on_delete(event):
 
 
 def sync(repo, target_path):
-    subprocess.check_call([ 'git', 'clone', repo, mount_target ])
+  reponame = repo.split('/')[-1].split('.')[0]
+  subprocess.check_call([ 'rm', '-rf', '{}/{}'.format(mount_target, reponame) ])
+  subprocess.check_call([ 'git', 'clone', repo, '{}/{}'.format(mount_target, reponame) ])
