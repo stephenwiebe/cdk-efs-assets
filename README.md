@@ -1,3 +1,7 @@
+[![NPM version](https://badge.fury.io/js/cdk-efs-assets.svg)](https://badge.fury.io/js/cdk-efs-assets)
+[![PyPI version](https://badge.fury.io/py/cdk-efs-assets.svg)](https://badge.fury.io/py/cdk-efs-assets)
+![Release](https://github.com/pahud/cdk-efs-assets/workflows/Release/badge.svg)
+
 # cdk-efs-assets
 
 CDK construct library to populate Amazon EFS assets from Github or S3.
