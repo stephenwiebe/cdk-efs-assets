@@ -7,7 +7,7 @@ const AUTOMATION_TOKEN = 'AUTOMATION_GITHUB_TOKEN';
 const project = new AwsCdkConstructLibrary({
   authorAddress: 'pahudnet@gmail.com',
   authorName: 'Pahud Hsieh',
-  cdkVersion: '1.77.0',
+  cdkVersion: '1.80.0',
   name: 'cdk-efs-assets',
   repository: 'https://github.com/pahud/cdk-efs-assets.git',
   description: 'Amazon EFS assets from Github repositories or S3 buckets',
@@ -17,6 +17,8 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-efs',
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-lambda',
+    '@aws-cdk/aws-s3',
+    '@aws-cdk/aws-events-targets',
     '@aws-cdk/aws-secretsmanager',
     '@aws-cdk/custom-resources',
   ],
