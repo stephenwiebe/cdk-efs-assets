@@ -48,6 +48,7 @@ static github(props: GithubSourceProps): SyncSource
 
 * **props** (<code>[GithubSourceProps](#cdk-efs-assets-githubsourceprops)</code>)  *No description*
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  The VPC of the Amazon EFS Filesystem. 
+  * **syncDirectoryPath** (<code>string</code>)  The (absolute) directory path inside the EFS AccessPoint to sync files to. __*Optional*__
   * **timeout** (<code>[Duration](#aws-cdk-core-duration)</code>)  Timeout duration for sync Lambda function. __*Optional*__
   * **vpcSubnets** (<code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code>)  Where to place the network interfaces within the VPC. __*Optional*__
   * **repository** (<code>string</code>)  The github repository HTTP URI. 
@@ -65,6 +66,7 @@ static s3Archive(props: S3ArchiveSourceProps): SyncSource
 
 * **props** (<code>[S3ArchiveSourceProps](#cdk-efs-assets-s3archivesourceprops)</code>)  *No description*
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  The VPC of the Amazon EFS Filesystem. 
+  * **syncDirectoryPath** (<code>string</code>)  The (absolute) directory path inside the EFS AccessPoint to sync files to. __*Optional*__
   * **timeout** (<code>[Duration](#aws-cdk-core-duration)</code>)  Timeout duration for sync Lambda function. __*Optional*__
   * **vpcSubnets** (<code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code>)  Where to place the network interfaces within the VPC. __*Optional*__
   * **bucket** (<code>[IBucket](#aws-cdk-aws-s3-ibucket)</code>)  The S3 bucket containing the archive file. 
@@ -115,6 +117,7 @@ Name | Type | Description
 -----|------|-------------
 **repository** | <code>string</code> | The github repository HTTP URI.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC of the Amazon EFS Filesystem.
+**syncDirectoryPath**? | <code>string</code> | The (absolute) directory path inside the EFS AccessPoint to sync files to.<br/>__*Optional*__
 **timeout**? | <code>[Duration](#aws-cdk-core-duration)</code> | Timeout duration for sync Lambda function.<br/>__*Optional*__
 **vpcSubnets**? | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | Where to place the network interfaces within the VPC.<br/>__*Optional*__
 
@@ -132,6 +135,7 @@ Name | Type | Description
 **bucket** | <code>[IBucket](#aws-cdk-aws-s3-ibucket)</code> | The S3 bucket containing the archive file.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC of the Amazon EFS Filesystem.
 **zipFilePath** | <code>string</code> | The path of the zip file to extract in the S3 bucket.
+**syncDirectoryPath**? | <code>string</code> | The (absolute) directory path inside the EFS AccessPoint to sync files to.<br/>__*Optional*__
 **syncOnUpdate**? | <code>boolean</code> | If this is set to true, then whenever a new object is uploaded to the specified path, an EFS sync will be triggered.<br/>__*Optional*__
 **timeout**? | <code>[Duration](#aws-cdk-core-duration)</code> | Timeout duration for sync Lambda function.<br/>__*Optional*__
 **vpcSubnets**? | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | Where to place the network interfaces within the VPC.<br/>__*Optional*__
@@ -148,6 +152,7 @@ Name | Type | Description
 Name | Type | Description 
 -----|------|-------------
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC of the Amazon EFS Filesystem.
+**syncDirectoryPath**? | <code>string</code> | The (absolute) directory path inside the EFS AccessPoint to sync files to.<br/>__*Optional*__
 **timeout**? | <code>[Duration](#aws-cdk-core-duration)</code> | Timeout duration for sync Lambda function.<br/>__*Optional*__
 **vpcSubnets**? | <code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code> | Where to place the network interfaces within the VPC.<br/>__*Optional*__
 

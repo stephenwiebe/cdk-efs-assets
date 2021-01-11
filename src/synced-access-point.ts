@@ -21,6 +21,12 @@ export interface SyncSourceProps {
    * Timeout duration for sync Lambda function. (optional, default: Duration.minutes(3))
    */
   readonly timeout?: cdk.Duration;
+  /**
+   * The (absolute) directory path inside the EFS AccessPoint to sync files to. Specify '/' to restore synced files to the root
+   * directory. (optional, default: a source-specific directory path. For example, for the GitHub source, the default
+   * behavior is to restore to a directory matching the name of the repository)
+   */
+  readonly syncDirectoryPath?: string;
 }
 
 export interface GithubSourceProps extends SyncSourceProps {
@@ -79,6 +85,16 @@ class GithubSyncSource extends SyncSource {
     const vpcSubnets = this.props.vpcSubnets ?? { subnetType: ec2.SubnetType.PRIVATE };
     const timeout = this.props.timeout ?? cdk.Duration.minutes(3);
 
+    let syncDirectoryPath;
+    if (this.props.syncDirectoryPath === undefined) {
+      // if property is unspecified, use repository name as output directory
+
+      const splitDirs = this.props.repository.split('/');
+      syncDirectoryPath = '/' + splitDirs[splitDirs.length - 1].split('.')[0];
+    } else {
+      syncDirectoryPath = this.props.syncDirectoryPath;
+    }
+
     const handler = new lambda.Function(accessPoint, 'GithubHandler', {
       runtime: lambda.Runtime.PYTHON_3_8,
       code: lambda.Code.fromAsset(path.join(__dirname, '../lambda-handler', 'github-sync')),
@@ -98,6 +114,7 @@ class GithubSyncSource extends SyncSource {
       environment: {
         REPOSITORY_URI: this.props.repository,
         MOUNT_TARGET: '/mnt/efsmount',
+        SYNC_PATH: syncDirectoryPath,
       },
       currentVersionOptions: {
         provisionedConcurrentExecutions: 1,
@@ -121,6 +138,18 @@ class S3ArchiveSyncSource extends SyncSource {
     const syncOnUpdate = this.props.syncOnUpdate ?? true;
     const timeout = this.props.timeout ?? cdk.Duration.minutes(3);
 
+    const splitDirs = this.props.zipFilePath.split('/');
+    const filename = splitDirs[splitDirs.length - 1].split('.')[0];
+
+    let syncDirectoryPath;
+    if (this.props.syncDirectoryPath === undefined) {
+      // if property is unspecified, use zip file name as output directory
+
+      syncDirectoryPath = '/' + filename;
+    } else {
+      syncDirectoryPath = this.props.syncDirectoryPath;
+    }
+
     const handler = new lambda.Function(accessPoint, 'SyncHandler', {
       runtime: lambda.Runtime.PYTHON_3_8,
       code: lambda.Code.fromAsset(path.join(__dirname, '../lambda-handler', 's3-archive-sync')),
@@ -134,6 +163,7 @@ class S3ArchiveSyncSource extends SyncSource {
         MOUNT_TARGET: '/mnt/efsmount',
         BUCKET_NAME: this.props.bucket.bucketName,
         ZIPPED_KEY: this.props.zipFilePath,
+        SYNC_PATH: syncDirectoryPath,
       },
       currentVersionOptions: {
         provisionedConcurrentExecutions: 1,
@@ -158,7 +188,7 @@ class S3ArchiveSyncSource extends SyncSource {
       );
        */
 
-      this.props.bucket.onCloudTrailWriteObject('S3ObjectListener', {
+      this.props.bucket.onCloudTrailWriteObject('S3FileListener-' + filename, {
         paths: [this.props.zipFilePath],
         target: new LambdaFunction(handler),
       });
