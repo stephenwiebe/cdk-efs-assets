@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { URL } from 'url';
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as efs from '@aws-cdk/aws-efs';
 import { LambdaFunction } from '@aws-cdk/aws-events-targets';
@@ -89,8 +90,8 @@ class GithubSyncSource extends SyncSource {
     if (this.props.syncDirectoryPath === undefined) {
       // if property is unspecified, use repository name as output directory
 
-      const splitDirs = this.props.repository.split('/');
-      syncDirectoryPath = '/' + splitDirs[splitDirs.length - 1].split('.')[0];
+      const parsed = new URL(this.props.repository);
+      syncDirectoryPath = '/' + path.basename(parsed.pathname, '.git');
     } else {
       syncDirectoryPath = this.props.syncDirectoryPath;
     }
@@ -138,8 +139,7 @@ class S3ArchiveSyncSource extends SyncSource {
     const syncOnUpdate = this.props.syncOnUpdate ?? true;
     const timeout = this.props.timeout ?? cdk.Duration.minutes(3);
 
-    const splitDirs = this.props.zipFilePath.split('/');
-    const filename = splitDirs[splitDirs.length - 1].split('.')[0];
+    const filename = path.basename(this.props.zipFilePath, '.zip');
 
     let syncDirectoryPath;
     if (this.props.syncDirectoryPath === undefined) {
