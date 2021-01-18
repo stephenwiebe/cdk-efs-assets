@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.2.0](https://github.com/pahud/cdk-efs-assets/compare/v0.1.69...v0.2.0) (2021-01-11)
+### [0.2.0](https://github.com/pahud/cdk-efs-assets/compare/v0.1.75...v0.2.0) (2021-01-18)
+
+### [0.1.75](https://github.com/pahud/cdk-efs-assets/compare/v0.1.74...v0.1.75) (2021-01-18)
+
+### [0.1.74](https://github.com/pahud/cdk-efs-assets/compare/v0.1.73...v0.1.74) (2021-01-16)
+
+### [0.1.73](https://github.com/pahud/cdk-efs-assets/compare/v0.1.72...v0.1.73) (2021-01-15)
+
+### [0.1.72](https://github.com/pahud/cdk-efs-assets/compare/v0.1.71...v0.1.72) (2021-01-14)
+
+### [0.1.71](https://github.com/pahud/cdk-efs-assets/compare/v0.1.70...v0.1.71) (2021-01-13)
+
+### [0.1.70](https://github.com/pahud/cdk-efs-assets/compare/v0.1.69...v0.1.70) (2021-01-12)
 
 ### [0.1.69](https://github.com/pahud/cdk-efs-assets/compare/v0.1.68...v0.1.69) (2021-01-11)
 
